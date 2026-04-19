@@ -19,10 +19,15 @@ const rajdhani = Rajdhani({
   display: "swap",
 });
 
+const defaultSiteUrl = "https://physics-bridge-builder.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
+
+/** Base dashboard → App → domain verification (`<meta name="base:app_id" />`) */
 const baseAppId =
-  process.env.NEXT_PUBLIC_BASE_APP_ID ?? "physics-bridge-builder";
+  process.env.NEXT_PUBLIC_BASE_APP_ID ?? "69e47d6786272d70f28d7427";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Physics Bridge Builder",
   description:
     "Build neon girders, run the sim, clear the gap — daily check-in on Base.",
