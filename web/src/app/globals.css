@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --neon-cyan: #22d3ee;
+  --neon-magenta: #e879f9;
+  --neon-lime: #a3e635;
+  --void: #05050d;
+}
+
+@theme inline {
+  --font-sans: var(--font-rajdhani), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+@keyframes neonPulse {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.92;
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes gridShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 48px 48px;
+  }
+}
+
+body {
+  font-family: var(--font-rajdhani), system-ui, sans-serif;
+  background-color: var(--void);
+  color: #fafafa;
+}
+
+.neon-edge {
+  animation: neonPulse 4s ease-in-out infinite;
+}

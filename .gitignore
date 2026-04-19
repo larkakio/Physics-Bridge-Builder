@@ -1,0 +1,31 @@
+# Next.js (web/)
+web/node_modules/
+web/.next/
+web/out/
+web/build/
+web/.vercel/
+web/coverage/
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+web/*.tsbuildinfo
+web/next-env.d.ts
+
+# Env — do not commit secrets (example file is tracked)
+web/.env
+web/.env.local
+web/.env.development.local
+web/.env.test.local
+web/.env.production.local
+web/.env*.local
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+
+# OS / IDE
+.DS_Store
+*.pem
+.idea/
+.vscode/
