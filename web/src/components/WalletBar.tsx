@@ -82,7 +82,7 @@ export function WalletBar() {
 
       {sheetOpen ? (
         <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
           role="presentation"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
@@ -90,14 +90,18 @@ export function WalletBar() {
             }
           }}
         >
+          {/*
+            Centered dialog (not bottom-sheet): bottom sheets grow upward and clip the top when the
+            connector list is long. Grid row minmax(0,1fr) lets the list scroll inside max-h.
+          */}
           <div
-            className="flex w-full max-w-md flex-col overflow-hidden rounded-t-3xl border border-cyan-500/30 bg-zinc-950/98 shadow-[0_0_40px_rgba(168,85,247,0.15)] backdrop-blur-md sm:max-h-[min(90dvh,720px)] sm:rounded-2xl"
+            className="grid w-full max-w-md grid-rows-[auto_minmax(0,1fr)] overflow-hidden rounded-2xl border border-cyan-500/40 bg-zinc-950 shadow-[0_0_48px_rgba(0,0,0,0.6)] max-h-[min(88dvh,calc(100dvh-2rem))]"
             role="dialog"
             aria-modal="true"
             aria-label="Choose wallet"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex shrink-0 items-center justify-between border-b border-zinc-800/80 px-4 py-3">
+            <div className="flex shrink-0 items-center justify-between border-b border-zinc-800 bg-zinc-950 px-4 py-3">
               <h2 className="font-[family-name:var(--font-orbitron)] text-sm font-semibold tracking-wide text-cyan-200">
                 Connect wallet
               </h2>
@@ -111,13 +115,13 @@ export function WalletBar() {
               </button>
             </div>
             <ul
-              className="max-h-[calc(92dvh-4.25rem)] overflow-y-auto overscroll-contain px-4 py-3 [-webkit-overflow-scrolling:touch] pb-[max(1rem,env(safe-area-inset-bottom))] sm:max-h-[min(60dvh,28rem)]"
+              className="min-h-0 overflow-y-auto overscroll-contain bg-zinc-950 px-4 py-3 [-webkit-overflow-scrolling:touch] pb-[max(0.75rem,env(safe-area-inset-bottom))]"
             >
               {connectors.map((connector) => (
                 <li key={connector.uid} className="mb-2 last:mb-0">
                   <button
                     type="button"
-                    className="w-full rounded-xl border border-zinc-700/80 bg-zinc-900/80 px-4 py-3 text-left text-sm text-zinc-100 transition hover:border-cyan-500/50 hover:bg-zinc-800"
+                    className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-left text-sm text-zinc-100 transition hover:border-cyan-500/50 hover:bg-zinc-800"
                     onClick={() =>
                       connect(
                         { connector, chainId: base.id },
